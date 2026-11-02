@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm Luxe Modern — Light */
+    --background: 38 43% 96%;          /* cream */
+    --foreground: 26 32% 14%;          /* espresso ink */
+
+    --card: 30 25% 98%;                /* soft card */
+    --card-foreground: 26 32% 14%;
+
+    --popover: 30 25% 98%;
+    --popover-foreground: 26 32% 14%;
+
+    --primary: 26 23% 32%;             /* mocha #6f4e37 */
+    --primary-foreground: 38 43% 96%;
+
+    --secondary: 36 20% 88%;           /* platinum-ish */
+    --secondary-foreground: 26 23% 24%;
+
+    --muted: 36 20% 90%;
+    --muted-foreground: 28 14% 40%;
+
+    --accent: 280 33% 90%;              /* pale lavender */
+    --accent-foreground: 280 33% 25%;
+
+    --destructive: 2 62% 42%;
+    --destructive-foreground: 38 43% 96%;
+
+    --success: 148 33% 35%;
+    --success-foreground: 38 43% 96%;
+
+    --warning: 33 60% 42%;
+    --warning-foreground: 38 43% 96%;
+
+    --border: 36 18% 86%;
+    --input: 36 18% 86%;
+    --ring: 280 33% 45%;
+
+    --mocha: 26 23% 32%;
+    --mocha-dark: 26 30% 18%;
+    --mocha-soft: 30 24% 64%;
+    --lavender: 280 33% 90%;
+    --platinum: 40 6% 89%;
+    --cream: 38 43% 96%;
+    --glow: 30 24% 64%;
+
+    --chart-1: 26 23% 32%;
+    --chart-2: 280 33% 55%;
+    --chart-3: 148 33% 40%;
+    --chart-4: 33 60% 50%;
+    --chart-5: 2 62% 52%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Warm Luxe Modern — Dark (deep espresso) */
+    --background: 26 28% 10%;          /* deep espresso */
+    --foreground: 38 30% 90%;
+
+    --card: 26 24% 13%;
+    --card-foreground: 38 30% 90%;
+
+    --popover: 26 24% 13%;
+    --popover-foreground: 38 30% 90%;
+
+    --primary: 30 24% 64%;              /* mocha-soft glow */
+    --primary-foreground: 26 28% 10%;
+
+    --secondary: 26 18% 20%;
+    --secondary-foreground: 38 30% 90%;
+
+    --muted: 26 18% 18%;
+    --muted-foreground: 36 14% 65%;
+
+    --accent: 280 24% 26%;              /* muted lavender */
+    --accent-foreground: 280 33% 92%;
+
+    --destructive: 2 55% 50%;
+    --destructive-foreground: 38 43% 96%;
+
+    --success: 148 30% 45%;
+    --success-foreground: 38 43% 96%;
+
+    --warning: 33 55% 55%;
+    --warning-foreground: 26 28% 10%;
+
+    --border: 26 18% 22%;
+    --input: 26 18% 22%;
+    --ring: 280 33% 65%;
+
+    --mocha: 30 24% 64%;
+    --mocha-dark: 26 28% 10%;
+    --mocha-soft: 30 20% 50%;
+    --lavender: 280 24% 26%;
+    --platinum: 40 6% 30%;
+    --cream: 26 28% 10%;
+    --glow: 30 24% 64%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  ::selection {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display), Georgia, serif;
+  }
+  .font-sans {
+    font-family: var(--font-sans), system-ui, sans-serif;
+  }
+  .font-deva {
+    font-family: var(--font-deva), "Noto Sans Devanagari", sans-serif;
+  }
+
+  /* Mesh gradient backgrounds */
+  .mesh-mocha {
+    background-image:
+      radial-gradient(at 20% 20%, hsl(280 33% 90% / 0.45) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, hsl(30 24% 64% / 0.35) 0px, transparent 50%),
+      radial-gradient(at 0% 80%, hsl(26 23% 32% / 0.18) 0px, transparent 50%),
+      radial-gradient(at 90% 70%, hsl(280 33% 88% / 0.4) 0px, transparent 50%);
+  }
+  .mesh-mocha-dark {
+    background-image:
+      radial-gradient(at 20% 20%, hsl(280 24% 26% / 0.6) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, hsl(30 24% 50% / 0.25) 0px, transparent 50%),
+      radial-gradient(at 0% 80%, hsl(26 28% 14% / 0.5) 0px, transparent 50%),
+      radial-gradient(at 90% 70%, hsl(280 24% 30% / 0.5) 0px, transparent 50%);
+  }
+
+  /* Glass card */
+  .glass {
+    background-color: hsl(var(--card) / 0.65);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid hsl(var(--border) / 0.6);
+  }
+  .glass-strong {
+    background-color: hsl(var(--card) / 0.85);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border: 1px solid hsl(var(--border) / 0.7);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+/* Himalayan skyline + floating shapes */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(1.5deg); }
+}
+@keyframes float-slower {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-22px) rotate(-2deg); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes mesh-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(2%, -2%) scale(1.05); }
+  66% { transform: translate(-2%, 1%) scale(0.98); }
+}
+
+.animate-float-slow { animation: float-slow 7s ease-in-out infinite; }
+.animate-float-slower { animation: float-slower 11s ease-in-out infinite; }
+.animate-mesh-drift { animation: mesh-drift 18s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-slow,
+  .animate-float-slower,
+  .animate-mesh-drift {
+    animation: none !important;
+  }
+}
